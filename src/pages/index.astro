@@ -1,13 +1,32 @@
 ---
 import Layout from "../layouts/Layout.astro";
-// import Counter from "../components/Counter.astro";
+import SelfEvaluation from "../components/SelfEvaluation.md";
+
+import ProjectOne from "../components/ProjectOne.astro";
+import ProjectTwo from "../components/ProjectTwo.md";
 
 import infoConfig from "../../info.config";
 
-import { Counter } from "../components/Counter";
+const baseInfo = [
+	{ label: infoConfig.phoneNum, icon: "" },
+	{ label: infoConfig.email, icon: "" },
+	{ label: infoConfig.address, icon: "" },
+];
 
-const msg = "Hello World";
-const nums = [1, 2, 3, 4, 5, 6, 7];
+const works = [
+	{
+		company: "company AAAA",
+		timeHorizon: "21/04 - 至今",
+		post: "front-end engineer",
+		projects: [{ component: ProjectOne }, { component: ProjectTwo }],
+	},
+	{
+		company: "company BBBB",
+		timeHorizon: "19/03 - 21/04",
+		post: "front-end engineer",
+		projects: [],
+	},
+];
 ---
 
 <Layout title="Welcome to Astro.">
@@ -16,41 +35,29 @@ const nums = [1, 2, 3, 4, 5, 6, 7];
 			<div class="md:fixed">
 				<div class="md:block">
 					<div class="flex justify-center">
-						<img class="h-32 w-32 rounded-full mx-auto" src="https://avatars.githubusercontent.com/u/12064746?v=4" />
+						<img class="h-32 w-32 rounded-full mx-auto" src={infoConfig.avatars} />
 					</div>
 					<div class="mb-12 text-center mt-4 justify-center items-center">
 						<h1 class="text-2xl text-gray-800 font-bold">{infoConfig.name}</h1>
-						<div class="md:text-lg text-gray-600">前端工程师</div>
-						<div class="md:text-lg text-gray-600">八年工作经验</div>
-						<div class="text-gray-600 md:hidden mt-1">(wx: cuixr1314)</div>
+						<div class="md:text-lg text-gray-600">{infoConfig.post}</div>
+						<div class="md:text-lg text-gray-600">{infoConfig.serviceYear}</div>
+						<div class="text-gray-600 md:hidden mt-1">{infoConfig.contact}</div>
 					</div>
 				</div>
 				<div class="mx-4 my-4 hidden md:block">
-					<div class="my-5 text-lg text-gray-600 flex">
-						<div class="mr-2">
-							<span class="iconfont icon-wechat"></span>
-						</div>
-						cuixr1314
-					</div>
-					<div class="my-5 text-lg text-gray-600 flex">
-						<div class="mr-2">
-							<span class="iconfont icon-Phoneshouji"></span>
-						</div>
-						138138138138
-					</div>
-					<div class="my-5 text-lg text-gray-600 flex">
-						<div class="mr-2">
-							<span class="iconfont icon-email"></span>
-						</div>
-						your_email@123.com
-					</div>
-					<div class="my-5 text-lg text-gray-600 flex">
-						<div class="mr-2">
-							<span class="iconfont icon-position"></span>
-						</div>
-						Beijing
-					</div>
-					<a href="http://github.com/cuixiaorui" class="my-5 flex" target="_blank">
+					{
+						baseInfo.map((info) => {
+							return (
+								<div class="my-5 text-lg text-gray-600 flex">
+									<div class="mr-2">
+										<span class={info.icon} />
+									</div>
+									<span>{info.label}</span>
+								</div>
+							);
+						})
+					}
+					<a href={infoConfig.github} class="my-5 flex" target="_blank">
 						<div class="mr-2">
 							<span class="iconfont icon-github"></span>
 						</div>
@@ -61,69 +68,37 @@ const nums = [1, 2, 3, 4, 5, 6, 7];
 		</div>
 		<div class="md:w-2/3 p-2 w-full">
 			<div class="mx-4 mb-6">
-				<h1 class="mb-4 text-4xl text-gray-700 font-bold">个人评价</h1>
+				<h2 class="mb-4 text-3xl text-gray-700 font-bold">Self Evaluation</h2>
 				<p class="text-lg">
-					这里写个人评价 这里写个人评价 这里写个人评价 这里写个人评价 这里写个人评价 这里写个人评价 这里写个人评价
-					这里写个人评价 这里写个人评价 这里写个人评价 这里写个人评价 这里写个人评价
+					<SelfEvaluation />
 				</p>
 			</div>
 			<div class="mx-4">
-				<h1 class="mb-4 text-4xl text-gray-700 font-bold">工作经历</h1>
+				<h2 class="mb-4 text-3xl text-gray-700 font-bold">Work Experience</h2>
 				<ul>
-					<li class="mb-4">
-						<h2 class="text-3xl font-medium text-gray-800">ABC 公司</h2>
-						<div>
-							<i class="bx bx-calendar text-sm" style="color: #666"></i>
-							<small class="text-sm text-gray-600">2021年8月 - 至今</small>
-						</div>
-						<div class="mt-1">
-							<div>
-								<h3 class="text-2xl font-medium text-gray-800">DEF项目</h3>
-								<p>基于 star 面试法来写 - 背景 - 任务 - 行动 - 结果</p>
-							</div>
-						</div>
-						<div class="mt-1">
-							<div>
-								<h3 class="text-2xl font-medium text-gray-800">GHI项目</h3>
-								<p>基于 star 面试法来写 - 背景 - 任务 - 行动 - 结果</p>
-							</div>
-						</div>
-						<div class="mt-1">
-							<div>
-								<h3 class="text-2xl font-medium text-gray-800">其他项目</h3>
-								<p>写2 - 3 个核心项目就足够了, 能体现出你的价值的</p>
-							</div>
-						</div>
-					</li>
-					<li class="mb-4">
-						<h2 class="text-3xl font-medium text-gray-800">CDE 公司</h2>
-						<div>
-							<i class="bx bx-calendar text-sm" style="color: #666"></i>
-							<small class="text-sm text-gray-600">2021年8月 - 至今</small>
-						</div>
-						<div class="mt-1">
-							<div>
-								<h3 class="text-2xl font-medium text-gray-800">DEF项目</h3>
-								<p>基于 star 面试法来写 - 背景 - 任务 - 行动 - 结果</p>
-							</div>
-						</div>
-						<div class="mt-1">
-							<div>
-								<h3 class="text-2xl font-medium text-gray-800">GHI项目</h3>
-								<p>基于 star 面试法来写 - 背景 - 任务 - 行动 - 结果</p>
-							</div>
-						</div>
-						<div class="mt-1">
-							<div>
-								<h3 class="text-2xl font-medium text-gray-800">其他项目</h3>
-								<p>写2 - 3 个核心项目就足够了, 能体现出你的价值的</p>
-							</div>
-						</div>
-					</li>
+					{
+						works.map((work) => {
+							return (
+								<li class="mb-4">
+									<div class="flex items-center justify-between">
+										<h3 class="text-2xl font-medium text-gray-800">{work.company}</h3>
+										<div class="text-1xl text-gray-600">{work.timeHorizon}</div>
+									</div>
+									{work.projects.map((project) => {
+										return (
+											<div class="mt-2">
+												<project.component />
+											</div>
+										);
+									})}
+								</li>
+							);
+						})
+					}
 				</ul>
 			</div>
 			<div class="mx-4">
-				<h1 class="mb-4 text-4xl text-gray-700 font-bold">Skill</h1>
+				<h2 class="mb-4 text-3xl text-gray-700 font-bold">Skill</h2>
 				<ul>
 					<li class="mb-6 flex flex-wrap">vue</li>
 				</ul>
