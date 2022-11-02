@@ -1,31 +1,15 @@
 ---
+import "../assets/iconfont.css";
+
 import Layout from "../layouts/Layout.astro";
-import SelfEvaluation from "../components/SelfEvaluation.md";
-
-import ProjectOne from "../components/ProjectOne.astro";
-import ProjectTwo from "../components/ProjectTwo.md";
-
-import infoConfig from "../../info.config";
+import { SelfEvaluation } from "../components/SelfEvaluation";
+import { WorkTemplate } from "../components/WorkTemplate";
+import { infoConfig } from "../../info.config";
 
 const baseInfo = [
-	{ label: infoConfig.phoneNum, icon: "" },
-	{ label: infoConfig.email, icon: "" },
-	{ label: infoConfig.address, icon: "" },
-];
-
-const works = [
-	{
-		company: "company AAAA",
-		timeHorizon: "21/04 - 至今",
-		post: "front-end engineer",
-		projects: [{ component: ProjectOne }, { component: ProjectTwo }],
-	},
-	{
-		company: "company BBBB",
-		timeHorizon: "19/03 - 21/04",
-		post: "front-end engineer",
-		projects: [],
-	},
+	{ label: infoConfig.phoneNum, icon: "iconfont icon-phone" },
+	{ label: infoConfig.email, icon: "iconfont icon-email" },
+	{ label: infoConfig.address, icon: "iconfont icon-address" },
 ];
 ---
 
@@ -49,7 +33,7 @@ const works = [
 						baseInfo.map((info) => {
 							return (
 								<div class="my-5 text-lg text-gray-600 flex">
-									<div class="mr-2">
+									<div class="mr-2 ">
 										<span class={info.icon} />
 									</div>
 									<span>{info.label}</span>
@@ -57,7 +41,7 @@ const works = [
 							);
 						})
 					}
-					<a href={infoConfig.github} class="my-5 flex" target="_blank">
+					<a href={infoConfig.github} class="my-5 flex items-center" target="_blank">
 						<div class="mr-2">
 							<span class="iconfont icon-github"></span>
 						</div>
@@ -75,27 +59,7 @@ const works = [
 			</div>
 			<div class="mx-4">
 				<h2 class="mb-4 text-3xl text-gray-700 font-bold">Work Experience</h2>
-				<ul>
-					{
-						works.map((work) => {
-							return (
-								<li class="mb-4">
-									<div class="flex items-center justify-between">
-										<h3 class="text-2xl font-medium text-gray-800">{work.company}</h3>
-										<div class="text-1xl text-gray-600">{work.timeHorizon}</div>
-									</div>
-									{work.projects.map((project) => {
-										return (
-											<div class="mt-2">
-												<project.component />
-											</div>
-										);
-									})}
-								</li>
-							);
-						})
-					}
-				</ul>
+				<WorkTemplate />
 			</div>
 			<div class="mx-4">
 				<h2 class="mb-4 text-3xl text-gray-700 font-bold">Skill</h2>

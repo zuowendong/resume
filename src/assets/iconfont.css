@@ -1,0 +1,60 @@
+@font-face {
+	font-family: "iconfont"; /* Project id 3741773 */
+	src: url("iconfont.ttf?t=1667358147107") format("truetype");
+}
+
+.iconfont {
+	font-family: "iconfont" !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-work:before {
+	content: "\e60e";
+}
+
+.icon-skill:before {
+	content: "\e7b6";
+}
+
+.icon-evaluate:before {
+	content: "\e624";
+}
+
+.icon-num_two:before {
+	content: "\e650";
+}
+
+.icon-num_four:before {
+	content: "\e64d";
+}
+
+.icon-num_one:before {
+	content: "\e64e";
+}
+
+.icon-num_three:before {
+	content: "\e64f";
+}
+
+.icon-address:before {
+	content: "\e63c";
+}
+
+.icon-phone:before {
+	content: "\e600";
+}
+
+.icon-github:before {
+	content: "\e628";
+}
+
+.icon-pointTo:before {
+	content: "\e627";
+}
+
+.icon-email:before {
+	content: "\e908";
+}
