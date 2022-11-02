@@ -2,7 +2,7 @@ import type { InfoConfig } from "./type.config";
 
 export const infoConfig: InfoConfig = {
 	name: "Jack",
-	avatars: "/avatars-jack.png",
+	avatars: "/resume/assets/avatars-jack.png",
 	post: "front-end engineer",
 	serviceYear: "five years",
 	contact: "coolbigflower",
