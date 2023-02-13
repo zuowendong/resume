@@ -3,26 +3,32 @@ export interface InfoConfig {
 	avatars: string;
 	post: string;
 	serviceYear: string;
-	contact: string;
 	phoneNum: string;
 	email: string;
-	address: string;
 	github?: string;
-	works: InfoWork[];
+
+	evaluationName: string;
+	evaluations: string[];
+
+	experienceName: string;
+	experiences: InfoWork[];
+
+	projectName: string;
+	projects: InfoProject[];
 }
 
 export interface InfoWork {
 	companyName: string;
 	timeHorizon: string;
 	post?: string;
-	projects: InfoProject[];
 }
 
 export interface InfoProject {
-	name: string;
+	title: string;
+	subTitle?: string;
 	techniques: InfoTechniques;
 	repository?: string;
-	content: string;
+	content: string[];
 }
 
 type InfoTechniques = string[] | { label: string; url: string }[];
